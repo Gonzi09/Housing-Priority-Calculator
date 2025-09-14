@@ -73,21 +73,21 @@ class TestHousingPriorityCalculator(unittest.TestCase):
 
     def test_points_for_credits_low(self) -> None:
         """Test points_for_credits with low credit count (e.g., 7)."""
-        expected_points = 10
+        expected_points = 0
         result = self.priority_calculator.points_for_credits(0)
         self.assertEqual(result, expected_points)
 
     def test_points_for_credits_medium(self) -> None:
         """Test points_for_credits with medium credit count (e.g., 15)."""
         # Test your scoring system with 15 credits
-        expected_points = 30
+        expected_points = 0
         result = self.priority_calculator.points_for_credits(15)
         self.assertEqual(result, expected_points)
 
     def test_points_for_credits_high(self) -> None:
         """Test points_for_credits with high credit count (e.g., 30)."""
         # Test your scoring system with 30 credits
-        expected_points = 45
+        expected_points = 10
         result = self.priority_calculator.points_for_credits(30)
         self.assertEqual(result, expected_points)
 
@@ -98,7 +98,7 @@ class TestHousingPriorityCalculator(unittest.TestCase):
         responses = {'at_least_21': True, 'honors': True, 'probation': True}
         result = self.priority_calculator.points_for_additional_questions(responses)
 
-        expected_points = 5 + 5 + 3
+        expected_points = 5 + 5 + 0
         self.assertEqual(result, expected_points)
 
 
@@ -108,7 +108,7 @@ class TestHousingPriorityCalculator(unittest.TestCase):
         responses = {'at_least_21': False, 'honors': False, 'probation': False}
         result = self.priority_calculator.points_for_additional_questions(responses)
 
-        expected_points = 0
+        expected_points = 3
         self.assertEqual(result, expected_points)
 
     def test_points_for_additional_questions_mixed(self) -> None:
@@ -117,7 +117,7 @@ class TestHousingPriorityCalculator(unittest.TestCase):
         responses = {'at_least_21': True, 'honors': True, 'probation': False}
         result = self.priority_calculator.points_for_additional_questions(responses)
 
-        expected_points = 5 + 5
+        expected_points = 5 + 5 + 3
         self.assertEqual(result, expected_points)
 
     def test_calculate_total_score_freshman_scenario(self) -> None:

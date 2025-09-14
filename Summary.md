@@ -67,6 +67,8 @@ I did not talk to anybody about this assignment
 * *https://docs.python.org/3/library/unittest.html – for learning about `unittest.mock.patch`.*   
 * *https://realpython.com/python-mock-library/ – example patterns for mocking user input.*  
 
+I watched https://www.youtube.com/watch?v=FUrui0DpK5I&t=733s to learn about unittest better
+I also used https://www.w3schools.com/python/python_dictionaries_access.asp to check how to acess elements in a dict
 ---  
 
 ## Logistics 
@@ -77,22 +79,31 @@ I did not talk to anybody about this assignment
 [1 point]   
 *Answer:*  
 
+Yes
+
 ### How long did the assignment take?   
 *Rather than giving a range, if you are unsure, give the average of the range. Break down time spent on different parts (writing tests, implementation, debugging, documentation).*    
 
 [1 point]   
 *Answer:*  
 
+It took me around 5 hours because I was making mistakes. I took around 3 hours in the testing section because I wasn't very profficient with tests and the patch method utilized
 ---  
 
 ## Reflections   
 *Give **one or more paragraphs** reflecting on your experience with the assignment, including answers to all of these questions:*   
-* What was the most difficult part of the assignment?   
-* What was the most rewarding part of the assignment?   
+* What was the most difficult part of the assignment? 
+All the asignment was challenging in the sense of getting the logic of OOP, how files where connected and how one depended on the other one. I was pretty much handling errors in methods like asking questions that I didn't have to because the points where going to be handle elsewhere. Therefore, getting the logic was a challenge.
+* What was the most rewarding part of the assignment?  
+Finishing it with errors. When I tested I got 8 different errors because I calculated the expected points incorrectly because I didn't quite pay attention 
 * What did you learn from this assignment?
-* Constructive and actionable suggestions for improving assignments, office hours, and lecture are always welcome.    
+
+I learned to pay attention and not rush. Specially when it comes to handle erors or edge cases, or even simply coding the methods require a lot of attention.
+* Constructive and actionable suggestions for improving assignments, office hours, and lecture are always welcome.
+
+More office hours in person. The chat is cool on powtograder but I am a person who needs to be with a human being to learn faster and not getting frustrated.
 
 [8 points]   
-*Answer:*  
-
+*Answer:* 
+The most difficult part of this assignment was understanding the logic of object-oriented programming and how the different files were connected and dependent on each other. At first, I was handling errors inside the wrong methods instead of letting the calculator handle the points, which made the structure confusing. The most rewarding part was finally running the tests—even though I initially got eight errors because I had miscalculated the expected points, fixing them helped me realize the importance of paying close attention. From this assignment, I learned not to rush and to carefully handle errors, edge cases, and even simple method logic with more attention. Additionally, I believe more in-person office hours would be valuable; while the online chat tool is helpful, I learn more effectively face-to-face, which would also reduce frustration.
 ---

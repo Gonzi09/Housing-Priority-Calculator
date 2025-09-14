@@ -8,19 +8,33 @@ from src.question_asker import HousingQuestionAsker
 from src.priority_calculator import HousingPriorityCalculator
 
 def calculate_score() -> int:
-    """Orchestrate all steps using both classes:
-      1) Create instances of HousingQuestionAsker and HousingPriorityCalculator
-      2) Use HousingQuestionAsker to gather all information
-      3) Use HousingPriorityCalculator to compute the final score
-      4) Handle the logic for only asking graduation status if student is a senior
-      Return total score.
-      5) Implement the main calculation flow using both classes
-    """
-    pass
+    
+    asker = HousingQuestionAsker()
+    calculator = HousingPriorityCalculator()
 
+    year = asker.ask_class_year()
+    num_credits = asker.ask_credits_earned()
+    is_graduating = asker.ask_graduation_status() if year is 4 else False
+    additional_responses = asker.ask_additional_questions()
+
+    total = calculator.calculate_total_score(year, is_graduating, num_credits, additional_responses)
+    
+    return total
 def main() -> None:
     """Entry point: print header, compute score, print footer. (For easier readability)"""
-    pass
+
+    print("===================================")
+    print(" Welcome to the Housing Calculator ")
+    print("===================================")
+
+    total = calculate_score()
+
+
+    print(f"\nYour housing priority score is: {total}")
+
+    print("===================================")
+    print(" Thank you for using the calculator ")
+    print("===================================")
 
 if __name__ == "__main__":
     main()

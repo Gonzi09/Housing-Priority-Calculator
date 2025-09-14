@@ -11,33 +11,26 @@ class HousingPriorityCalculator:
     """Class responsible for calculating priority scores based on student information."""
 
     def points_for_class_year(self, year: int) -> int:
-        """
-        Given an integer `year`, return points based on your scoring system.
-
-        Here, you may assume year is an integer from 1 to 4, since we already 
-        validated input in the question asker. 
-
-        Example scoring systems:
-        - Linear: Freshman=1, Sophomore=2, Junior=3, Senior=4
-        - Exponential: Freshman=2, Sophomore=4, Junior=8, Senior=16
-        - Custom: Design your own fair system
-
-        Document your chosen system in SUMMARY.md!
         
-        Implement logic to calculate points based on class year
-        """
-        pass
+        points = 0
+        
+        if year == 1:
+            return points
+        elif year == 2:
+            points = 10
+        elif year == 3:
+            points = 20
+        elif year == 4:
+            points = 30
+        return points
+
 
     def points_for_graduation(self, is_graduating: bool) -> int:
-        """ 
-        Return points based on graduation status.
+        points = 0
+        if is_graduating:
+            points = 20
 
-        Typical approach: graduating students get bonus points (e.g., 5),
-        non-graduating students get 0. But you can design your own system.
-        
-        Implement logic for calculating points for a graduating student
-        """
-        pass
+        return points
 
     def points_for_credits(self, num_credits: int) -> int:
         """
@@ -55,24 +48,38 @@ class HousingPriorityCalculator:
         Document your system in SUMMARY.md!
         
         Implement points system for credits.
+
         """
-        pass
+        points = 0
+
+        if num_credits >= 0 and num_credits <= 29:
+            return points
+
+        elif num_credits >= 30 and num_credits <= 59:
+            points = 10
+
+        elif num_credits >= 60 and num_credits <= 89:
+            points = 30
+
+        elif num_credits >= 90:
+            points = 45
+        return points
 
     def points_for_additional_questions(self, responses: dict[str, bool]) -> int:
         """
         Given the dict from ask_additional_questions(), assign points.
-
-        Example:
-        - 'old23': True → 2 points, False → 0 points
-        - 'honors': True → 3 points, False → 0 points
-        - Total for {'old23': True, 'honors': False} = 2 + 0 = 2 points
-
-        Design your own questions and point values!
-        
-        Implement scoring logic.
         """
-        pass
+        points = 0
+        if responses['at_least_21']:
+            points += 5
+        if responses['honors']:
+            points += 5
+        if responses['probation'] is False:
+            points +=3
+        
+        return points
 
+    
     def calculate_total_score(
         self,
         year: int,
@@ -80,10 +87,7 @@ class HousingPriorityCalculator:
         num_credits: int,
         additional_responses: dict[str, bool],
     ) -> int:
-        """
-        Calculate the total priority score based on all inputs.
 
-        This method should use all your other methods:
         total = (
             self.points_for_class_year(year)
             + self.points_for_graduation(is_graduating)
@@ -91,17 +95,4 @@ class HousingPriorityCalculator:
             + self.points_for_additional_questions(additional_responses)
         )
 
-        Here, you may assume that the responses dict contains valid keys
-        corresponding to the questions you designed in ask_additional_questions().
-        
-        Args:
-            year (int): Class year (1-4)
-            is_graduating (bool): Whether student is graduating this semester
-            credits (int): Number of credits earned
-            additional_responses (dict): Dictionary of additional question responses
-        Returns:
-            int: Total priority score
-            
-        Use the other methods you implemented to calculate total score
-        """
-        pass
+        return total
