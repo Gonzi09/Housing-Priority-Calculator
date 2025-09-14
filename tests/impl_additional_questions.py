@@ -20,35 +20,35 @@ class TestAdditionalQuestions(unittest.TestCase):
 
     def test_ask_additional_questions_basic(self) -> None:
         """Test ask_additional_questions with basic y/n responses."""
-        with patch('builtins.input', side_effect=['y', 'n']):
-            result = self.question_asker.ask_additional_questions()
+        with patch('builtins.input', side_effect=['y', 'n', 'n']):
+
             # Update these keys based on your actual additional questions:
             # Expected result format: {'question1_key': True, 'question2_key': False}
             # Common examples: 'old23', 'honors', 'athlete', 'work_study', etc.
-            # self.assertEqual(result, {'old23': True, 'honors': False})
-            pass
+            responses = {'at_least_21': True, 'honors': False, 'probation': False}
+            result = self.question_asker.ask_additional_questions()
+            self.assertEqual(result, responses)
+            
 
     def test_ask_additional_questions_reverse(self) -> None:
         """Test ask_additional_questions with n/y responses."""
-        with patch('builtins.input', side_effect=['n', 'y']):
+        with patch('builtins.input', side_effect=['n', 'n', 'y']):
+            responses = {'at_least_21': False, 'honors': False, 'probation': True}
             result = self.question_asker.ask_additional_questions()
-            # Test with opposite responses (n first, y second):
-            # self.assertEqual(result, {'old23': False, 'honors': True})
-            pass
+            self.assertEqual(result, responses)
 
     def test_ask_additional_questions_uppercase(self) -> None:
         """Test ask_additional_questions with uppercase responses."""
-        with patch('builtins.input', side_effect=['Y', 'N']):
+        with patch('builtins.input', side_effect=['Y', 'N', 'Y']):
             result = self.question_asker.ask_additional_questions()
+            responses = {'at_least_21': True, 'honors': False, 'probation': True}
             # Test that uppercase Y/N work correctly:
-            # self.assertEqual(result, {'old23': True, 'honors': False})
-            pass
+            self.assertEqual(result, responses)
 
     def test_ask_additional_questions_with_invalid_input(self) -> None:
         """Test ask_additional_questions with some invalid inputs."""
-        with patch('builtins.input', side_effect=['invalid', 'y', 'maybe', 'n']):
+        with patch('builtins.input', side_effect=['invalid', 'y', 'maybe', 'n', 'maybe', 'y']):
             result = self.question_asker.ask_additional_questions()
-            # Test that the method handles invalid input gracefully for both questions:
-            # Expected: should return proper dict after rejecting 'invalid' and 'maybe'
-            # self.assertEqual(result, {'old23': True, 'honors': False})
-            pass
+            responses = {'at_least_21': True, 'honors': False, 'probation': True}
+            self.assertEqual(result, responses)
+

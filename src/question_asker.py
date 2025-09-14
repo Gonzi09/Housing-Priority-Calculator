@@ -13,6 +13,7 @@ class HousingQuestionAsker:
     """Class responsible for asking questions and gathering user input."""
 
     def ask_class_year(self) -> int:
+        
         """Ask the student for their class year and return it as int.
         
         Requirements based on tests:
